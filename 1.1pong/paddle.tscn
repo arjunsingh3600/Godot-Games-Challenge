@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://m1hpct7akrag"]
+
+[ext_resource type="Script" path="res://paddle.cs" id="1_pqi5r"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_y6o7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sopto"]
+size = Vector2(10, 60)
+
+[node name="Main" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_y6o7g")
+
+[node name="Paddle" type="Area2D" parent="."]
+position = Vector2(4.76257, 30.1161)
+script = ExtResource("1_pqi5r")
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="Paddle"]
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(-5, -30, 5, -30, 5, 30, -5, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+shape = SubResource("RectangleShape2D_sopto")
+
+[node name="CpuPaddle" type="Area2D" parent="."]
+position = Vector2(614.15, 258.785)
+script = ExtResource("1_pqi5r")
+metadata/_edit_group_ = true
+
+[node name="Polygon2D" type="Polygon2D" parent="CpuPaddle"]
+color = Color(0, 0, 1, 1)
+polygon = PackedVector2Array(-5, -30, 5, -30, 5, 30, -5, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CpuPaddle"]
+shape = SubResource("RectangleShape2D_sopto")
